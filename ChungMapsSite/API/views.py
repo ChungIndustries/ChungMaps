@@ -1,18 +1,19 @@
 from django.http import Http404
 
 from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateAPIView
-from .permissions import IsMapScannerOrReadOnly
+from rest_framework_api_key.permissions import HasAPIKey
+from .permissions import IsMapEditorOrReadOnly
 
-from MapExplorer.models import MinecraftBlock
+from MapViewer.models import MinecraftBlock
 from .serializers import MinecraftBlockSerializer
 
-from django.contrib.auth.models import User
-from .serializers import UserSerializer
+from MapViewer.models import MapExplorer
+from .serializers import MapExplorerSerializer
 
 
 class MinecraftBlockList(ListCreateAPIView):
     serializer_class = MinecraftBlockSerializer
-    permission_classes = [IsMapScannerOrReadOnly]
+    permission_classes = [IsMapEditorOrReadOnly | HasAPIKey]
 
     def get_queryset(self):
         dimension = self.kwargs.get('dimension', None)
@@ -24,7 +25,7 @@ class MinecraftBlockList(ListCreateAPIView):
 
 class MinecraftBlockDetail(RetrieveUpdateAPIView):
     serializer_class = MinecraftBlockSerializer
-    permission_classes = [IsMapScannerOrReadOnly]
+    permission_classes = [IsMapEditorOrReadOnly | HasAPIKey]
 
     def get_object(self):
         pk = self.kwargs.get('pk', None)
@@ -45,11 +46,11 @@ class MinecraftBlockDetail(RetrieveUpdateAPIView):
         serializer.save(lastModifiedBy=self.request.user)
 
 
-class UserList(ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class MapExplorerList(ListAPIView):
+    queryset = MapExplorer.objects.all()
+    serializer_class = MapExplorerSerializer
 
 
-class UserDetail(RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+class MapExplorerDetail(RetrieveAPIView):
+    queryset = MapExplorer.objects.all()
+    serializer_class = MapExplorerSerializer

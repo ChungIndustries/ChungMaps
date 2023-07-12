@@ -1,6 +1,5 @@
 from rest_framework import serializers
-from django.contrib.auth.models import User
-from MapExplorer.models import MinecraftBlock
+from MapViewer.models import MinecraftBlock, MapExplorer
 
 
 class MinecraftBlockSerializer(serializers.ModelSerializer):
@@ -9,9 +8,10 @@ class MinecraftBlockSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserSerializer(serializers.ModelSerializer):
+class MapExplorerSerializer(serializers.ModelSerializer):
     scanned_blocks = serializers.PrimaryKeyRelatedField(many=True, queryset=MinecraftBlock.objects.all())
 
     class Meta:
-        model = User
-        fields = ['id', 'username', 'scanned_blocks']
+        model = MapExplorer
+        fields = ['id', 'name', 'x', 'y', 'z', 'dimension', 'trusted', 'scanned_blocks']
+

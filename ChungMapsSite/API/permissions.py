@@ -1,7 +1,7 @@
 from rest_framework import permissions
 
 
-class IsMapScannerOrReadOnly(permissions.IsAuthenticated):
+class IsMapEditorOrReadOnly(permissions.IsAuthenticated):
     """
     Custom permission to only allow map scanners to edit blocks.
     """
@@ -10,4 +10,4 @@ class IsMapScannerOrReadOnly(permissions.IsAuthenticated):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        return super().has_permission(request, view) and request.user.groups.filter(name='MapScanners').exists()
+        return super().has_permission(request, view) and request.user.groups.filter(name='MapEditors').exists()
