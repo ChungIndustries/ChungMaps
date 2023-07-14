@@ -1,15 +1,15 @@
 migrate((db) => {
   const collection = new Collection({
-    "id": "mvbs3vc6tw1puam",
-    "created": "2023-07-13 00:03:07.002Z",
-    "updated": "2023-07-13 00:03:07.002Z",
-    "name": "MapExplorers",
+    "id": "zcouzcd90zen3c8",
+    "created": "2023-07-14 02:52:39.716Z",
+    "updated": "2023-07-14 02:52:39.716Z",
+    "name": "blockks",
     "type": "base",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "69ybycmd",
+        "id": "51oq79tf",
         "name": "name",
         "type": "text",
         "required": true,
@@ -22,7 +22,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "ejrfpdbq",
+        "id": "dakkeo4h",
         "name": "x",
         "type": "number",
         "required": false,
@@ -34,7 +34,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "cp6tmkx2",
+        "id": "zlewebdf",
         "name": "y",
         "type": "number",
         "required": false,
@@ -46,7 +46,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "dehmlvpd",
+        "id": "oglutthi",
         "name": "z",
         "type": "number",
         "required": false,
@@ -58,49 +58,51 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "fqom0iml",
+        "id": "sabfpktu",
         "name": "dimension",
-        "type": "text",
-        "required": false,
+        "type": "select",
+        "required": true,
         "unique": false,
         "options": {
-          "min": null,
-          "max": null,
-          "pattern": ""
+          "maxSelect": 1,
+          "values": [
+            "overworld",
+            "nether"
+          ]
         }
       },
       {
         "system": false,
-        "id": "dfu81o3k",
-        "name": "trusted",
-        "type": "bool",
+        "id": "5yhj7fc4",
+        "name": "metadata",
+        "type": "json",
         "required": false,
         "unique": false,
         "options": {}
       },
       {
         "system": false,
-        "id": "2dimyuzv",
-        "name": "scanned_blocks",
+        "id": "9mlwar4c",
+        "name": "last_scanned_by",
         "type": "relation",
-        "required": false,
+        "required": true,
         "unique": false,
         "options": {
-          "collectionId": "j74cc0p6xqf0lo4",
-          "cascadeDelete": true,
+          "collectionId": "wnflwie1drgwajn",
+          "cascadeDelete": false,
           "minSelect": null,
-          "maxSelect": null,
+          "maxSelect": 1,
           "displayFields": []
         }
       }
     ],
     "indexes": [
-      "CREATE INDEX `idx_Cy1nM2g` ON `MapExplorers` (\n  `x`,\n  `y`,\n  `z`,\n  `dimension`\n)"
+      "CREATE UNIQUE INDEX `idx_AHHlcYn` ON `blockks` (\n  `x`,\n  `y`,\n  `z`,\n  `dimension`\n)"
     ],
-    "listRule": null,
-    "viewRule": null,
-    "createRule": null,
-    "updateRule": null,
+    "listRule": "(@request.query.dimension:isset = false &&\n @request.query.x:isset = false &&\n @request.query.y:isset = false &&\n @request.query.z:isset = false) ||\n(dimension = @request.query.dimension &&\n @request.query.x:isset = false &&\n @request.query.y:isset = false &&\n @request.query.z:isset = false) ||\n(dimension = @request.query.dimension &&\n x = @request.query.x &&\n y = @request.query.y &&\n z = @request.query.z)",
+    "viewRule": "",
+    "createRule": "@request.auth.id != \"\"",
+    "updateRule": "@request.auth.id != \"\"",
     "deleteRule": null,
     "options": {}
   });
@@ -108,7 +110,7 @@ migrate((db) => {
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("mvbs3vc6tw1puam");
+  const collection = dao.findCollectionByNameOrId("zcouzcd90zen3c8");
 
   return dao.deleteCollection(collection);
 })

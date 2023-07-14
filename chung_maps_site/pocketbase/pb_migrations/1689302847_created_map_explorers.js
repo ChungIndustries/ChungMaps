@@ -1,28 +1,15 @@
 migrate((db) => {
   const collection = new Collection({
-    "id": "j74cc0p6xqf0lo4",
-    "created": "2023-07-13 00:01:30.983Z",
-    "updated": "2023-07-13 00:01:30.983Z",
-    "name": "blocks",
-    "type": "base",
+    "id": "wnflwie1drgwajn",
+    "created": "2023-07-14 02:47:27.724Z",
+    "updated": "2023-07-14 02:47:27.724Z",
+    "name": "map_explorers",
+    "type": "auth",
     "system": false,
     "schema": [
       {
         "system": false,
-        "id": "t1sl5vum",
-        "name": "name",
-        "type": "text",
-        "required": true,
-        "unique": false,
-        "options": {
-          "min": null,
-          "max": 100,
-          "pattern": ""
-        }
-      },
-      {
-        "system": false,
-        "id": "ytxhz0sz",
+        "id": "dfrjej0r",
         "name": "x",
         "type": "number",
         "required": false,
@@ -34,7 +21,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "bholdt77",
+        "id": "d7hkvl1e",
         "name": "y",
         "type": "number",
         "required": false,
@@ -46,7 +33,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "c3cvs4jr",
+        "id": "ogbbucow",
         "name": "z",
         "type": "number",
         "required": false,
@@ -58,10 +45,10 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "yv2wmak5",
+        "id": "8aerywbz",
         "name": "dimension",
         "type": "text",
-        "required": false,
+        "required": true,
         "unique": false,
         "options": {
           "min": null,
@@ -71,7 +58,7 @@ migrate((db) => {
       },
       {
         "system": false,
-        "id": "h2u0t6r6",
+        "id": "feklfyqc",
         "name": "metadata",
         "type": "json",
         "required": false,
@@ -80,20 +67,29 @@ migrate((db) => {
       }
     ],
     "indexes": [
-      "CREATE UNIQUE INDEX `idx_bINOdnh` ON `blocks` (\n  `x`,\n  `y`,\n  `z`,\n  `dimension`\n)"
+      "CREATE UNIQUE INDEX `idx_nDMt9Xq` ON `map_explorers` (\n  `x`,\n  `y`,\n  `z`,\n  `dimension`\n)"
     ],
-    "listRule": null,
-    "viewRule": null,
+    "listRule": "",
+    "viewRule": "",
     "createRule": null,
     "updateRule": null,
     "deleteRule": null,
-    "options": {}
+    "options": {
+      "allowEmailAuth": false,
+      "allowOAuth2Auth": false,
+      "allowUsernameAuth": true,
+      "exceptEmailDomains": [],
+      "manageRule": null,
+      "minPasswordLength": 8,
+      "onlyEmailDomains": [],
+      "requireEmail": false
+    }
   });
 
   return Dao(db).saveCollection(collection);
 }, (db) => {
   const dao = new Dao(db);
-  const collection = dao.findCollectionByNameOrId("j74cc0p6xqf0lo4");
+  const collection = dao.findCollectionByNameOrId("wnflwie1drgwajn");
 
   return dao.deleteCollection(collection);
 })
