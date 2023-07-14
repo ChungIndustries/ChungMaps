@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "eventsource": "^2.0.2",
     "next": "^13.4.9",
+    "pocketbase": "^0.15.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4"
   },
   "devDependencies": {
+    "@types/eventsource": "^1.1.11",
     "@types/node": "20.4.1",
     "@types/react": "18.2.14",
     "typescript": "5.1.6"
