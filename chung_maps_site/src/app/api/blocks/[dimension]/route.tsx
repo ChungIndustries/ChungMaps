@@ -1,20 +1,16 @@
-import PocketBase from 'pocketbase';
-import { NextResponse } from 'next/server';
+import { getDB, getResponse } from '@/app/api/util';
 
 // TODO: Do more research on caching
 export const revalidate = 0;
 
 
-const API_URL = "http://127.0.0.1:8090";
-
-
 export async function GET(request: Request, context: { params: { dimension: string } }) {
     const { dimension } = context.params;
 
-    const pb = new PocketBase(API_URL);
-    const records = await pb.collection('blocks').getFullList({
-        dimension
-    });
-
-    return NextResponse.json(records);
+    return getResponse(async () => {
+        return await getDB().collection('blocks').getFullList({
+            dimension,
+            expand: 'last_scanned_by'
+        });
+    })
 }
