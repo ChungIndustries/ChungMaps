@@ -9,12 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.78.2",
+    "@react-three/fiber": "^8.13.5",
+    "@types/three": "^0.154.0",
     "eventsource": "^2.0.2",
     "next": "^13.4.9",
     "pocketbase": "^0.15.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-loader-spinner": "^5.3.4"
+    "react-loader-spinner": "^5.3.4",
+    "three": "^0.154.0"
   },
   "devDependencies": {
     "@types/eventsource": "^1.1.11",
