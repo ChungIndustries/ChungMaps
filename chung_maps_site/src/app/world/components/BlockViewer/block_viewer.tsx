@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useLayoutEffect } from "react";
 import { InstancedMesh } from "three";
 import { BLOCK_TEMP_OBJECT, BLOCK_GEOMETRY } from "./geometry";
@@ -8,7 +10,7 @@ interface BlockViewerProps {
     blocks: MinecraftBlock[];
 }
 
-function InstancedBlocks({ blocks }: BlockViewerProps) {
+export default function BlockViewer({ blocks }: BlockViewerProps) {
     const ref = useRef<InstancedMesh>(null!);
     
     useLayoutEffect(() => {
@@ -19,16 +21,9 @@ function InstancedBlocks({ blocks }: BlockViewerProps) {
         });
 
         ref.current.instanceMatrix.needsUpdate = true;
-    }, []);
+    }, [blocks]);
 
     return (
         <instancedMesh ref={ref} args={[BLOCK_GEOMETRY, GRASS_MATERIAL, blocks.length]} />
     )
-}
-
-
-export default function BlockViewer({ blocks }: BlockViewerProps) {
-    return (
-        <InstancedBlocks blocks={blocks} />
-    );
 }
