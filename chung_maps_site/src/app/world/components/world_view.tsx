@@ -6,16 +6,25 @@ import {
     GizmoHelper, GizmoViewport, 
     Sky, 
     Select, useSelect, 
-    Edges, 
-    useCursor } from "@react-three/drei";
+} from "@react-three/drei";
 
-import { MinecraftBlocksView } from "./BlockViewers";
-import { useMinecraftBlocks } from "../lib";
+import { MinecraftBlocksView, MapExplorerView } from "./BlockViewers";
+import { useMinecraftBlocks, useMapExplorers } from "../lib";
+
+import { useState } from "react";
+
 
 
 export default function WorldView() {
 
     const blocks = useMinecraftBlocks();
+    const mapExplorers = useMapExplorers();
+
+    const [selectedID, setSelectedID] = useState<string | null>(null);
+
+    const handleSelect = (id: string) => {
+        setSelectedID(id === selectedID ? null : id);
+    }
 
     return (
         <Canvas>
@@ -30,6 +39,10 @@ export default function WorldView() {
             <OrbitControls />
 
             <MinecraftBlocksView blocks={blocks} />
+
+            { mapExplorers?.map((explorer) => (
+                <MapExplorerView key={explorer.id} explorer={explorer} isSelected={selectedID === explorer.id} onSelected={() => handleSelect(explorer.id)} />
+            )) }
             
         </Canvas>
     );
