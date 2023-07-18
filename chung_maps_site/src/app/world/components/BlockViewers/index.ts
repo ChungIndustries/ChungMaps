@@ -1,0 +1,1 @@
+export { MinecraftBlockViewer } from './minecraftblock_viewer';

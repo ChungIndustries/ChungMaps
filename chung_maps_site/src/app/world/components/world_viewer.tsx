@@ -3,7 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import {Sky, OrbitControls, Select, useSelect, Loader, GizmoHelper, GizmoViewport} from '@react-three/drei';
 
-import BlockViewer from "./BlockViewer";
+import { MinecraftBlockViewer } from "./BlockViewers";
 import { useMinecraftBlocks } from "../lib";
 
 
@@ -23,7 +23,7 @@ export default function WorldViewer() {
 
             <OrbitControls />
 
-            <BlockViewer blocks={blocks} />
+            <MinecraftBlockViewer blocks={blocks} />
         </Canvas>
     );
 }
