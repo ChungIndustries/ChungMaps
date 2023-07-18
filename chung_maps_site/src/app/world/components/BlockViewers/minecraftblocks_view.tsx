@@ -6,11 +6,11 @@ import { BLOCK_TEMP_OBJECT, BLOCK_GEOMETRY } from "./geometry";
 import { GRASS_MATERIAL } from "./material";
 
 
-interface MinecraftBlockViewProps {
+interface MinecraftBlocksViewProps {
     blocks: MinecraftBlock[];
 }
 
-export function MinecraftBlockView({ blocks }: MinecraftBlockViewProps) {
+export function MinecraftBlocksView({ blocks }: MinecraftBlocksViewProps) {
     const ref = useRef<InstancedMesh>(null!);
     
     useLayoutEffect(() => {

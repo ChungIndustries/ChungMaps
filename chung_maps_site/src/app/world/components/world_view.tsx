@@ -1,9 +1,15 @@
 'use client'
 
 import { Canvas } from "@react-three/fiber";
-import {Sky, OrbitControls, Select, useSelect, Loader, GizmoHelper, GizmoViewport} from '@react-three/drei';
+import { 
+    OrbitControls, 
+    GizmoHelper, GizmoViewport, 
+    Sky, 
+    Select, useSelect, 
+    Edges, 
+    useCursor } from "@react-three/drei";
 
-import { MinecraftBlockView } from "./BlockViewers";
+import { MinecraftBlocksView } from "./BlockViewers";
 import { useMinecraftBlocks } from "../lib";
 
 
@@ -23,7 +29,8 @@ export default function WorldView() {
 
             <OrbitControls />
 
-            <MinecraftBlockView blocks={blocks} />
+            <MinecraftBlocksView blocks={blocks} />
+            
         </Canvas>
     );
 }
