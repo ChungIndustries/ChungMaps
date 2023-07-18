@@ -1,1 +1,1 @@
-export { MinecraftBlockViewer } from './minecraftblock_viewer';
+export { MinecraftBlockView } from './minecraftblock_view';
