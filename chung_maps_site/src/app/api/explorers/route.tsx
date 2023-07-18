@@ -1,15 +1,14 @@
-import { getDB, getResponse } from '@/app/api/util';
+import { getDB, getResponse } from '@api/util';
+
+
+// TODO: Do more research on caching and on-demand revalidation
+export const revalidate = 0;
+
 
 // import eventsource from 'eventsource';
 // global.EventSource = eventsource as any;
 
-// TODO: Do more research on caching
-export const revalidate = 0;
-
-
-// const pb = new PocketBase(API_URL);
-
-// pb.collection('blocks').subscribe('*', async (e) => {
+// getDB().collection('blocks').subscribe('*', async (e) => {
 //     console.log(e);
 //     let url = new URL('/api/revalidate', 'http://localhost:3000');
 //     url.searchParams.set('path', '/api/blocks');
@@ -17,7 +16,6 @@ export const revalidate = 0;
 //     const response = await fetch(url);
 //     console.log(response.text());
 // });
-
 
 
 export async function GET() {

@@ -1,6 +1,6 @@
-import { getDB, getResponse } from '@/app/api/util';
+import { getDB, getResponse } from '@api/util';
 
-// TODO: Do more research on caching
+// TODO: Do more research on caching and on-demand revalidation
 export const revalidate = 0;
 
 

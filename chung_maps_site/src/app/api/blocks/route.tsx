@@ -1,21 +1,20 @@
-import { getDB, getResponse } from '@/app/api/util';
+import { getDB, getResponse } from '@api/util';
 
-// import eventsource from 'eventsource';
-// global.EventSource = eventsource as any;
 
-// TODO: Do more research on caching
+// TODO: Do more research on caching and on-demand revalidation
 export const revalidate = 0;
 
 
-// const pb = new PocketBase(API_URL);
-
-// pb.collection('blocks').subscribe('*', async (e) => {
+// import eventsource from 'eventsource';
+// global.EventSource = eventsource as any;
+//
+// getDB().collection('blocks').subscribe('*', async (e) => {
 //     console.log(e);
-//     let url = new URL('/api/revalidate', 'http://localhost:3000');
-//     url.searchParams.set('path', '/api/blocks');
-//     url.searchParams.set('revalidation_token', process.env.REVALIDATION_TOKEN!)
-//     const response = await fetch(url);
-//     console.log(response.text());
+//     // let url = new URL('/api/revalidate', 'http://localhost:3000');
+//     // url.searchParams.set('path', '/api/blocks');
+//     // url.searchParams.set('revalidation_token', process.env.REVALIDATION_TOKEN!)
+//     // const response = await fetch(url);
+//     // console.log(response.text());
 // });
 
 

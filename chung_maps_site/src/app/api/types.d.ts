@@ -19,6 +19,6 @@ type MinecraftBlock = {
     y: number;
     z: number;
     dimension: string;
-    metadata: JSON;
+    metadata: JSON | null;
     last_scanned_by: string;
 }
