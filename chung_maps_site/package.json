@@ -1,0 +1,30 @@
+{
+  "name": "chung_maps_site",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-spring/three": "^9.7.3",
+    "@react-three/drei": "^9.78.2",
+    "@react-three/fiber": "^8.13.5",
+    "@types/three": "^0.154.0",
+    "eventsource": "^2.0.2",
+    "next": "^13.4.9",
+    "pocketbase": "^0.15.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "three": "^0.154.0"
+  },
+  "devDependencies": {
+    "@types/eventsource": "^1.1.11",
+    "@types/node": "20.4.1",
+    "@types/react": "18.2.14",
+    "typescript": "5.1.6"
+  }
+}
