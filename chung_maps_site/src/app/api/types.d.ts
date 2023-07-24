@@ -8,6 +8,7 @@ type MapExplorer = {
     y: number;
     z: number;
     dimension: string;
+    rotation: number;
 }
 
 type MinecraftBlock = {
