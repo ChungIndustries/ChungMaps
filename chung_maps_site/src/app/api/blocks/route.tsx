@@ -31,12 +31,12 @@ export async function GET() {
 export async function POST(request: Request) {
     return getResponse(async () => {
         const db = getDB();
-        const body = await request.json();
+        const data = await request.json();
 
-        const { username, api_key } = body;
+        const { username, api_key } = data;
 
         await db.collection('map_explorers').authWithPassword(username, api_key);
-        const record = await db.collection('blocks').create(body);
+        const record = await db.collection('blocks').create<MinecraftBlock>(data);
         db.authStore.clear();
 
         return record;
