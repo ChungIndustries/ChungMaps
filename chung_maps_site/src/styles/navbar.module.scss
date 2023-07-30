@@ -1,0 +1,18 @@
+$navHeight: 8vh;
+
+.topNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $navHeight;
+    width: 100%;
+
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    background-color: white;
+
+    z-index: 100;
+}
+
+.topNavSpacer {
+    height: $navHeight;
+}
