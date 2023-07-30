@@ -1,0 +1,19 @@
+$landingPageHeight: 92vh;
+
+:export {
+    landingPageHeight: $landingPageHeight;
+}
+
+.landingPage {
+    height : $landingPageHeight;
+}
+
+.sideBySide {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.relative {
+    position: relative;
+}

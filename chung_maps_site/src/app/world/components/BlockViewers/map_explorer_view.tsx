@@ -22,19 +22,29 @@ export function MapExplorerView({ explorer, isSelected, onSelected }: MapExplore
 
     useCursor(hovered);
 
-    const { x, y, z } = useSpring({
-        x: explorer.x,
-        y: explorer.y,
-        z: explorer.z,
+    const { posX, posY, posZ } = useSpring({
+        posX: explorer.x,
+        posY: explorer.y,
+        posZ: explorer.z,
     });
+
+    // const { rotX, rotY, rotZ } = useSpring({
+    //     rotX: explorer.,
+    //     rotY: hovered ? Math.PI / 4 : 0,
+    //     rotZ: hovered ? Math.PI / 4 : 0,
+    // });
 
     return (
         <animated.mesh
             ref={ref}
-            position-x={x}
-            position-y={y}
-            position-z={z}
+            position-x={posX}
+            position-y={posY}
+            position-z={posZ}
+
+
+
             scale = {1}
+
             geometry={BLOCK_GEOMETRY}
             material={MAP_EXPLORER_MATERIAL}
 
