@@ -1,3 +1,8 @@
+type InventoryItem = {
+    name: string;
+    count: number;
+}
+
 type MapExplorer = {
     id: string;
     created: Date;
@@ -9,6 +14,8 @@ type MapExplorer = {
     z: number;
     dimension: string;
     rotation: number;
+    inventory: Array<InventoryItem>;
+    selected_slot: number;
 }
 
 type MinecraftBlock = {
